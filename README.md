@@ -1,5 +1,9 @@
 # Foreman DigitalOcean Plugin
 
+[![Code Climate](https://codeclimate.com/github/theforeman/foreman-digitalocean/badges/gpa.svg)](https://codeclimate.com/github/theforeman/foreman-digitalocean)
+[![Gem Version](https://badge.fury.io/rb/foreman_digitalocean.svg)](http://badge.fury.io/rb/foreman_digitalocean)
+[![Dependency Status](https://gemnasium.com/theforeman/foreman-digitalocean.svg)](https://gemnasium.com/theforeman/foreman-digitalocean)
+
 ```foreman-digitalocean``` enables provisioning and managing of [DigitalOcean](http://digitalocean.com) droplets in [Foreman](http://github.com/theforeman/foreman), all of that under the GPL v3+ license.
 
 * Website: [TheForeman.org](http://theforeman.org)
@@ -16,6 +20,18 @@
 Please see the Foreman manual for appropriate instructions:
 
 * [Foreman: How to Install a Plugin](http://theforeman.org/manuals/latest/index.html#6.1InstallaPlugin)
+
+### Red Hat, CentOS, Fedora, Scientific Linux (rpm)
+
+Set up the repo as explained in the link above, then run
+
+    # yum install ruby193-rubygem-foreman_digitalocean
+
+### Debian, Ubuntu (deb)
+
+Set up the repo as explained in the link above, then run
+
+    # apt-get install ruby-foreman-digitalocean
 
 ### Bundle (gem)
 
