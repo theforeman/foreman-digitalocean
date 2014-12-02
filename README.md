@@ -1,5 +1,4 @@
 # Foreman DigitalOcean Plugin
-====================
 
 ```foreman-digitalocean``` enables provisioning and managing of [DigitalOcean](http://digitalocean.com) droplets in [Foreman](http://github.com/theforeman/foreman), all of that under the GPL v3+ license.
 
