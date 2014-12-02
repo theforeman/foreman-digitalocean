@@ -21,10 +21,6 @@ module ForemanDigitalocean
         compute_resource ForemanDigitalocean::Digitalocean
       end
     end
-
-    rake_tasks do
-      load "#{ForemanDigitalocean::Engine.root}/lib/foreman_digitalocean/tasks/test.rake"
-    end
   end
 
   require 'fog/digitalocean'
