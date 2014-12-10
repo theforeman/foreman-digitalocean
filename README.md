@@ -45,10 +45,6 @@ Then run `bundle install` from the same directory
 
 To verify that the installation was successful, go to Foreman, top bar **Administer > About** and check 'foreman_digitalocean' shows up in the **System Status** menu under the Plugins tab.
 
-### Packages
-
-rpms & debs will be in the official Foreman plugins repository soon.
-
 ## Configuration
 
 Go to **Infrastructure > Compute Resources** and click on "New Compute Resource".
