@@ -14,7 +14,7 @@ module ForemanDigitalocean
     end
 
     def provided_attributes
-      super.merge({ :ip => :public_ip_address })
+      super.merge({ :uuid => :identity_to_s, :ip => :public_ip_address })
     end
 
     def self.model_name
