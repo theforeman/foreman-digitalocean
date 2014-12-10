@@ -3,6 +3,10 @@ module FogExtensions
     module Server
       extend ActiveSupport::Concern
 
+      def identity_to_s
+        identity.to_s
+      end
+
       def vm_description
         flavor.try(:name)
       end
