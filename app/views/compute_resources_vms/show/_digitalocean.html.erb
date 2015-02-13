@@ -6,9 +6,8 @@
     <%= prop :private_ip_address %>
     <%= prop :state %>
     <%= prop :created_at, 'Created' %>
-    <%= prop :image_id, 'Image ID' %>
-    <%= prop @vm.image.name, 'Image' if @vm.image.present? %>
-    <%= prop :flavor_id, 'Flavor ID' %>
-    <%= prop :vm_description, "Type (flavor)" %>
+    <%= prop :image_name, 'Image' if @vm.image.present? %>
+    <%= prop :flavor_name, "Type (flavor)" %>
+    <%= prop :region_name, "Region" %>
   </table>
 </div>
