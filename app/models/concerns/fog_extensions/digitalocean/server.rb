@@ -16,14 +16,28 @@ module FogExtensions
         @flavor ||= service.flavors.get(flavor_id.to_i)
       end
 
+      def flavor_name
+        requires :flavor
+        @flavor_name ||= @flavor.try(:name)
+      end
+
       def image
         requires :image_id
         @image ||= service.images.get(image_id.to_i)
       end
 
+      def image_name
+        @image_name ||= @image.try(:name)
+      end
+
       def region
         requires :region_id
         @region ||= service.regions.get(region_id.to_i)
+      end
+
+      def region_name
+        requires :region
+        @region_name ||= @region.try(:name)
       end
 
       def ip_addresses
