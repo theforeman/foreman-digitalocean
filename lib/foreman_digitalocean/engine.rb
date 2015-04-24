@@ -17,7 +17,7 @@ module ForemanDigitalocean
 
     initializer 'foreman_digitalocean.register_plugin', :after => :finisher_hook do
       Foreman::Plugin.register :foreman_digitalocean do
-        requires_foreman '> 1.4'
+        requires_foreman '>= 1.8'
         compute_resource ForemanDigitalocean::Digitalocean
       end
     end
