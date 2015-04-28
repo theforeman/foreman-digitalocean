@@ -45,6 +45,14 @@ Then run `bundle install` from the same directory
 
 To verify that the installation was successful, go to Foreman, top bar **Administer > About** and check 'foreman_digitalocean' shows up in the **System Status** menu under the Plugins tab.
 
+## Compatibility
+
+
+| Foreman Version | Plugin Version |
+| --------------- | --------------:|
+| <= 1.7.x        | ~> 0.1.x       |
+| >= 1.8.0        | ~> 0.2.x       |
+
 ## Configuration
 
 Go to **Infrastructure > Compute Resources** and click on "New Compute Resource".
