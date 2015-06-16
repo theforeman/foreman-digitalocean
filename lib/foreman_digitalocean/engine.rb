@@ -1,6 +1,5 @@
 require 'fast_gettext'
 require 'gettext_i18n_rails'
-require 'fog'
 
 module ForemanDigitalocean
   # Inherit from the Rails module of the parent app (Foreman), not the plugin.
