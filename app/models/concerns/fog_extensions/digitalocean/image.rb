@@ -3,7 +3,7 @@ module FogExtensions
     module Image
       extend ActiveSupport::Concern
 
-      attr_accessor :os_version
+      attr_accessor :os_version, :uuid
 
       # Override attribute :name
       included do
