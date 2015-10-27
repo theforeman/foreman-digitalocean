@@ -1,0 +1,50 @@
+2015-10-26	Alex Shepherd <alex.shepherd@hydrant.co.uk>
+	* Fix #12154 - use image.uuid instead of image.id to fix API host creation
+
+2015-06-16	Tommy McNeely <tommy@lark-it.com>
+	* Merge pull request #8 from shlomizadok/fix_10795
+
+2015-06-16	Shlomi Zadok <shlomi@ben-hanna.com>
+	* fixes #10795 - remove 'fog' dependency
+
+2015-04-28	Tommy McNeely <tommy@lark-it.com>
+	* Fixes #10242 - Add compatiblity notice for Foreman 1.8
+
+2015-04-23	Tommy McNeely <tommy@lark-it.com>
+	* Merge pull request #7 from TJM/10242-new-form-partial-name
+	* Fixes #10242 - Foreman 1.8 compatiblity - form rename
+
+2015-02-13	Tommy McNeely <tommy@lark-it.com>
+	* Bump to version 0.1.0
+	* fixes #8650 - VM tab should show region name
+
+2014-12-17	Tommy McNeely <tommy@lark-it.com>
+	* Merge pull request #4 from unorthodoxgeek/8617
+
+2014-12-17	Tom Caspy <tcaspy@gmail.com>
+	* fixes #8617 - adding ssh key pair integration for digital ocean
+
+2014-12-15	timfallmk <tim@midokura.com>
+	* Need to require 'date' from stdlib
+
+2014-12-10	Daniel Lobato <elobatocs@gmail.com>
+	* Bump to version 0.0.3
+
+2014-12-10	Tommy McNeely <tommy@lark-it.com>
+	* fixes #8555 - uuid issues during create or associate
+
+2014-12-02	Daniel Lobato García <elobatocs@gmail.com>
+	* Add badges to README
+
+2014-12-02	Daniel Lobato <elobatocs@gmail.com>
+	* Release 0.0.2
+	* Update LICENSE to GPL v3
+	* Remove hr in README
+	* Plugin & Gem structure
+
+2014-12-02	Tommy McNeely <tommy@lark-it.com>
+	* Add DigitalOcean support
+
+2014-12-01	Daniel Lobato García <elobatocs@gmail.com>
+	* Initial commit
+
