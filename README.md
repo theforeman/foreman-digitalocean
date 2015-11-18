@@ -6,6 +6,9 @@
 
 ```foreman-digitalocean``` enables provisioning and managing of [DigitalOcean](http://digitalocean.com) droplets in [Foreman](http://github.com/theforeman/foreman), all of that under the GPL v3+ license.
 
+## NOTICE - DigitalOcean APIv1 Deprecated
+Digital Ocean has End of Life'd their APIv1 - https://developers.digitalocean.com/documentation/changelog/api-v1/api-v1-end-of-life/ -- as such, this module ceased working. There has been work in progress to update the "Fog" libraries to use APIv2, and just recently version 1.36 was release which should resolve the problems. I will update/remove this notice once it is resolved. Please see http://projects.theforeman.org/issues/11332 for the most up to date information.
+
 * Website: [TheForeman.org](http://theforeman.org)
 * ServerFault tag: [Foreman](http://serverfault.com/questions/tagged/foreman)
 * Issues: [foreman-digitalocean Redmine](http://projects.theforeman.org/projects/digitalocean/issues)
