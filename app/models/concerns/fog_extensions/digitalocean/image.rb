@@ -23,9 +23,12 @@ module FogExtensions
       # Attempt guessing arch based on the name from digital ocean
       def arch
         requires :os_version
-        os_version.end_with?("x64") ? "x86_64" : ( os_version.end_with?("x32") ? "i386" : nil )
+        if os_version.end_with?("x64")
+          "x86_64"
+        elsif os_version.end_with?("x32")
+          "i386"
+        end
       end
-
     end
   end
 end

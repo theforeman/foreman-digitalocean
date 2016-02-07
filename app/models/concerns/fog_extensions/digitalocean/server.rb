@@ -3,6 +3,8 @@ module FogExtensions
     module Server
       extend ActiveSupport::Concern
 
+      attr_accessor :image_id
+
       def identity_to_s
         identity.to_s
       end
@@ -44,6 +46,10 @@ module FogExtensions
         [public_ip_address, private_ip_address].flatten.select(&:present?)
       end
 
+      def state
+        requires :status
+        @state ||= status
+      end
     end
   end
 end

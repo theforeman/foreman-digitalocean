@@ -1,24 +1,25 @@
 module ForemanDigitalocean
   class Digitalocean < ComputeResource
+    alias_attribute :api_key, :password
+    alias_attribute :region, :url
+
     has_one :key_pair, :foreign_key => :compute_resource_id, :dependent => :destroy
     delegate :flavors, :to => :client
 
-    validates :user, :password, :presence => true
+    validates :api_key, :presence => true
     before_create :test_connection
 
     after_create :setup_key_pair
     after_destroy :destroy_key_pair
 
-
-    # Not sure why it would need a url, but OK (copied from ec2)
-    alias_attribute :region, :url
+    attr_accessible :region, :api_key
 
     def to_label
       "#{name} (#{provider_friendly_name})"
     end
 
     def provided_attributes
-      super.merge({ :uuid => :identity_to_s, :ip => :public_ip_address })
+      super.merge(:uuid => :identity_to_s, :ip => :public_ip_address)
     end
 
     def self.model_name
@@ -35,8 +36,9 @@ module ForemanDigitalocean
       raise(ActiveRecord::RecordNotFound)
     end
 
-    def create_vm(args = { })
+    def create_vm(args = {})
       args["ssh_keys"] = [ssh_key] if ssh_key
+      args['image'] = args['image_id']
       super(args)
     rescue Fog::Errors::Error => e
       logger.error "Unhandled DigitalOcean error: #{e.class}:#{e.message}\n " + e.backtrace.join("\n ")
@@ -48,13 +50,13 @@ module ForemanDigitalocean
     end
 
     def regions
-      return [] if user.blank? || password.blank?
+      return [] if api_key.blank?
       client.regions
     end
 
     def test_connection(options = {})
       super
-      errors[:user].empty? and errors[:password].empty? and regions.count
+      errors[:password].empty? && regions.count
     rescue Excon::Errors::Unauthorized => e
       errors[:base] << e.response.body
     rescue Fog::Errors::Error => e
@@ -63,12 +65,12 @@ module ForemanDigitalocean
 
     def destroy_vm(uuid)
       vm = find_vm_by_uuid(uuid)
-      vm.destroy if vm.present?
+      vm.delete if vm.present?
       true
     end
 
     # not supporting update at the moment
-    def update_required?(old_attrs, new_attrs)
+    def update_required?(*)
       false
     end
 
@@ -77,7 +79,8 @@ module ForemanDigitalocean
     end
 
     def associated_host(vm)
-      Host.authorized(:view_hosts, Host).where(:ip => [vm.public_ip_address, vm.private_ip_address]).first
+      Host.authorized(:view_hosts, Host).
+        where(:ip => [vm.public_ip_address, vm.private_ip_address]).first
     end
 
     def user_data_supported?
@@ -85,7 +88,7 @@ module ForemanDigitalocean
     end
 
     def default_region_name
-      @default_region_name ||= client.regions.get(region.to_i).try(:name)
+      @default_region_name ||= client.regions[region.to_i].try(:name)
     rescue Excon::Errors::Unauthorized => e
       errors[:base] << e.response.body
     end
@@ -95,25 +98,24 @@ module ForemanDigitalocean
     def client
       @client ||= Fog::Compute.new(
         :provider => "DigitalOcean",
-        :digitalocean_client_id => user,
-        :digitalocean_api_key => password,
+        :version => 'V2',
+        :digitalocean_token => api_key
       )
     end
 
     def vm_instance_defaults
       super.merge(
-        :flavor_id => client.flavors.first.id
+        :size => client.flavors.first.slug
       )
     end
 
-
-    # this method creates a new key pair for each new DigitalOcean compute resource
-    # it should create the key and upload it to DigitalOcean
+    # Creates a new key pair for each new DigitalOcean compute resource
+    # After creating the key, it uploads it to DigitalOcean
     def setup_key_pair
       public_key, private_key = generate_key
       key_name = "foreman-#{id}#{Foreman.uuid}"
-      key = client.create_ssh_key key_name, public_key
-      KeyPair.create! :name => key_name, :compute_resource_id => self.id, :secret => private_key
+      client.create_ssh_key key_name, public_key
+      KeyPair.create! :name => key_name, :compute_resource_id => id, :secret => private_key
     rescue => e
       logger.warn "failed to generate key pair"
       logger.error e.message
@@ -134,24 +136,18 @@ module ForemanDigitalocean
 
     def ssh_key
       @ssh_key ||= begin
-        key = client.list_ssh_keys.data[:body]["ssh_keys"].select{|i| i["name"] == key_pair.name}.first
-        if key
-          #the vm creator expects objects which respond to id, OpenStruct is the shortest solution.
-          OpenStruct.new(key)
-        else
-          nil
-        end
+        key = client.list_ssh_keys.data[:body]["ssh_keys"].find { |i| i["name"] == key_pair.name }
+        key['id'] if key.present?
       end
     end
 
     def generate_key
       key = OpenSSL::PKey::RSA.new 2048
       type = key.ssh_type
-      data = [ key.to_blob ].pack('m0')
+      data = [key.to_blob].pack('m0')
 
       openssh_format_public_key = "#{type} #{data}"
       [openssh_format_public_key, key.to_pem]
     end
-
   end
 end
