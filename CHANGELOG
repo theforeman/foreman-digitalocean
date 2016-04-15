@@ -1,3 +1,12 @@
+2016-04-15	Daniel Lobato <elobatocs@gmail.com>
+	* Fixes #11332 - DigitalOcean API v2 support
+
+2015-11-18	Tommy McNeely <tommy@lark-it.com>
+	* APIv1 deprecation notice
+
+2015-10-27	Daniel Lobato <elobatocs@gmail.com>
+	* Bump version to 0.2.1
+
 2015-10-26	Alex Shepherd <alex.shepherd@hydrant.co.uk>
 	* Fix #12154 - use image.uuid instead of image.id to fix API host creation
 
