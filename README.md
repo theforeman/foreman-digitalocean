@@ -52,12 +52,13 @@ To verify that the installation was successful, go to Foreman, top bar **Adminis
 | --------------- | --------------:|
 | <= 1.7.x        | ~> 0.1.x       |
 | >= 1.8.0        | ~> 0.2.x       |
+| >= 1.11.0       | ~> 1.x       |
 
 ## Configuration
 
 Go to **Infrastructure > Compute Resources** and click on "New Compute Resource".
 
-Choose the **DigitalOcean provider**, and fill in all the fields. The API client and secret keys can be retrieved from [the API v1 DigitalOcean site](https://cloud.digitalocean.com/api_access). The secret key will be encrypted in the database.
+Choose the **DigitalOcean provider**, and fill in all the fields. You need an API token with read and write access, which can be created at the [DigitalOcean API section](https://cloud.digitalocean.com/settings/api/tokens). It will be encrypted in the database. 
 
 That's it. You're now ready to create and manage droplets in your new DigitalOcean compute resource.
 
