@@ -77,8 +77,7 @@ module ForemanDigitalocean
     end
 
     def associated_host(vm)
-      Host.authorized(:view_hosts, Host).
-        where(:ip => [vm.public_ip_address, vm.private_ip_address]).first
+      associate_by("ip", [vm.public_ip_address])
     end
 
     def user_data_supported?
