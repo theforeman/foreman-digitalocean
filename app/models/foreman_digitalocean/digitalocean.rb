@@ -12,8 +12,6 @@ module ForemanDigitalocean
     after_create :setup_key_pair
     after_destroy :destroy_key_pair
 
-    attr_accessible :region, :api_key
-
     def to_label
       "#{name} (#{provider_friendly_name})"
     end

@@ -18,6 +18,7 @@ module ForemanDigitalocean
       Foreman::Plugin.register :foreman_digitalocean do
         requires_foreman '>= 1.8'
         compute_resource ForemanDigitalocean::Digitalocean
+        parameter_filter ComputeResource, :region, :api_key
       end
     end
 
