@@ -1,4 +1,20 @@
+2016-08-11	Daniel Lobato <elobatocs@gmail.com>
+	* Fixes #16071 - New/edit compute resource doesn't remove API_key
+
+2016-08-09	Daniel Lobato <elobatocs@gmail.com>
+	* Refs #15961 - Remove attr_accessible from tests
+
+2016-08-03	Greg Sutcliffe <greg.Sutcliffe@gmail.com>
+	* Fixes #15281 - Only associate on public_ip_address
+
+2016-08-03	Daniel Lobato <elobatocs@gmail.com>
+	* Fixes #15961 - Move to strong_params
+
+2016-04-20	Daniel Lobato García <me@daniellobato.me>
+	* Explain how to get DO API v2 token
+
 2016-04-15	Daniel Lobato <elobatocs@gmail.com>
+	* Version 1.0
 	* Fixes #11332 - DigitalOcean API v2 support
 
 2015-11-18	Tommy McNeely <tommy@lark-it.com>
