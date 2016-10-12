@@ -44,7 +44,12 @@ module ForemanDigitalocean
     end
 
     def available_images
-      client.images
+      images = []
+      collection = client.images
+      begin
+        images += collection.to_a
+      end until !collection.next_page
+      images
     end
 
     def regions
