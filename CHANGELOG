@@ -1,3 +1,18 @@
+2016-12-23	Daniel Lobato García <me@daniellobato.me>
+	* fixes #10110 - ipv6 support
+
+2016-11-01	Timo Goebel <mail@timogoebel.name>
+	* fixes #10110 - ipv6 support
+
+2016-10-24	Tommy McNeely <tommy@lark-it.com>
+	* Merge pull request #15 from timogoebel/16110-list-all-images
+
+2016-10-12	Timo Goebel <mail@timogoebel.name>
+	* fixes #16110 - list all available images
+
+2016-10-03	Daniel Lobato Garcia <me@daniellobato.me>
+	* Version 1.1
+
 2016-08-11	Daniel Lobato <elobatocs@gmail.com>
 	* Fixes #16071 - New/edit compute resource doesn't remove API_key
 
