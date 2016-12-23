@@ -5,3 +5,5 @@
 <div id='region_selection'>
   <%= select_region(f, compute_resource) %>
 </div>
+<%= checkbox_f f, :ipv6, { :help_inline => _('Enable IPv6 networking for this VM.'), :label => _('IPv6 Support'), :label_size => "col-md-2" }, true, false if new_host %>
+<%= checkbox_f f, :private_networking, { :help_inline => _('Enable private networking for this VM.'), :label => _('Private Networking'), :label_size => "col-md-2" }, true, false if new_host %>

@@ -43,7 +43,7 @@ module FogExtensions
       end
 
       def ip_addresses
-        [public_ip_address, private_ip_address].flatten.select(&:present?)
+        [ipv4_address, ipv6_address].flatten.select(&:present?)
       end
 
       def state
