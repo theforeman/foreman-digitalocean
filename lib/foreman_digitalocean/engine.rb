@@ -16,7 +16,7 @@ module ForemanDigitalocean
 
     initializer 'foreman_digitalocean.register_plugin', :before => :finisher_hook do
       Foreman::Plugin.register :foreman_digitalocean do
-        requires_foreman '>= 1.8'
+        requires_foreman '>= 1.16'
         compute_resource ForemanDigitalocean::Digitalocean
         parameter_filter ComputeResource, :region, :api_key
       end
@@ -28,20 +28,14 @@ module ForemanDigitalocean
 
     config.to_prepare do
       require 'fog/digitalocean'
-      require 'fog/digitalocean/compute_v2'
-      require 'fog/digitalocean/models/compute_v2/image'
-      require 'fog/digitalocean/models/compute_v2/server'
-      require File.expand_path(
-        '../../../app/models/concerns/fog_extensions/digitalocean/server',
-        __FILE__)
-      require File.expand_path(
-        '../../../app/models/concerns/fog_extensions/digitalocean/image',
-        __FILE__)
+      require 'fog/digitalocean/compute'
+      require 'fog/digitalocean/models/compute/image'
+      require 'fog/digitalocean/models/compute/server'
 
-      Fog::Compute::DigitalOceanV2::Image.send :include,
-        FogExtensions::DigitalOcean::Image
-      Fog::Compute::DigitalOceanV2::Server.send :include,
-        FogExtensions::DigitalOcean::Server
+      Fog::Compute::DigitalOcean::Image.send :include,
+        FogExtensions::Digitalocean::Image
+      Fog::Compute::DigitalOcean::Server.send :include,
+        FogExtensions::Digitalocean::Server
       ::Host::Managed.send :include,
         ForemanDigitalocean::Concerns::HostManagedExtensions
     end
