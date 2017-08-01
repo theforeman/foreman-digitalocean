@@ -1,9 +1,9 @@
-require File.expand_path("../engine", File.dirname(__FILE__))
+require File.expand_path('../engine', File.dirname(__FILE__))
 namespace :test do
-  desc "Run the plugin unit test suite."
+  desc 'Run the plugin unit test suite.'
   task :digitalocean => ['db:test:prepare'] do
     test_task = Rake::TestTask.new('digitalocean_test_task') do |t|
-      t.libs << ["test", "#{ForemanDigitalocean::Engine.root}/test"]
+      t.libs << ['test', "#{ForemanDigitalocean::Engine.root}/test"]
       t.test_files = [
         "#{ForemanDigitalocean::Engine.root}/test/**/*_test.rb"
       ]
@@ -25,7 +25,7 @@ namespace :digitalocean do
                          "#{ForemanDigitalocean::Engine.root}/test/**/*.rb"]
       end
     rescue
-      puts "Rubocop not loaded."
+      puts 'Rubocop not loaded.'
     end
 
     Rake::Task['rubocop_digitalocean'].invoke
@@ -38,7 +38,7 @@ end
 
 load 'tasks/jenkins.rake'
 if Rake::Task.task_defined?(:'jenkins:unit')
-  Rake::Task["jenkins:unit"].enhance do
+  Rake::Task['jenkins:unit'].enhance do
     Rake::Task['test:digitalocean'].invoke
     Rake::Task['digitalocean:rubocop'].invoke
   end

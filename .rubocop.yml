@@ -1,0 +1,50 @@
+# Don't enforce documentation
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/AbcSize:
+  Max: 25
+
+# Force before_filter until upgrade to Rails 4
+Rails/ActionFilter:
+  EnforcedStyle: action
+
+Style/AccessorMethodName:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/EachWithObject:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+# Support both ruby19 and hash_rockets
+Style/HashSyntax:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Lint/Loop:
+  Enabled: false

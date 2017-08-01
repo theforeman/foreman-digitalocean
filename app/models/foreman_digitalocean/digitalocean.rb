@@ -20,7 +20,7 @@ module ForemanDigitalocean
       super.merge(
         :uuid => :identity_to_s,
         :ip => :ipv4_address,
-        :ip6 => :ipv6_address,
+        :ip6 => :ipv6_address
       )
     end
 
@@ -39,7 +39,7 @@ module ForemanDigitalocean
     end
 
     def create_vm(args = {})
-      args["ssh_keys"] = [ssh_key] if ssh_key
+      args['ssh_keys'] = [ssh_key] if ssh_key
       args['image'] = args['image_id']
       super(args)
     rescue Fog::Errors::Error => e
@@ -82,11 +82,11 @@ module ForemanDigitalocean
     end
 
     def self.provider_friendly_name
-      "DigitalOcean"
+      'DigitalOcean'
     end
 
     def associated_host(vm)
-      associate_by("ip", [vm.public_ip_address])
+      associate_by('ip', [vm.public_ip_address])
     end
 
     def user_data_supported?
@@ -103,7 +103,7 @@ module ForemanDigitalocean
 
     def client
       @client ||= Fog::Compute.new(
-        :provider => "DigitalOcean",
+        :provider => 'DigitalOcean',
         :digitalocean_token => api_key
       )
     end
@@ -122,7 +122,7 @@ module ForemanDigitalocean
       client.create_ssh_key key_name, public_key
       KeyPair.create! :name => key_name, :compute_resource_id => id, :secret => private_key
     rescue => e
-      logger.warn "failed to generate key pair"
+      logger.warn 'failed to generate key pair'
       logger.error e.message
       logger.error e.backtrace.join("\n")
       destroy_key_pair
@@ -141,7 +141,7 @@ module ForemanDigitalocean
 
     def ssh_key
       @ssh_key ||= begin
-        key = client.list_ssh_keys.data[:body]["ssh_keys"].find { |i| i["name"] == key_pair.name }
+        key = client.list_ssh_keys.data[:body]['ssh_keys'].find { |i| i['name'] == key_pair.name }
         key['id'] if key.present?
       end
     end

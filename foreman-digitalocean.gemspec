@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'fog-digitalocean', '~> 0.3'
 
-  s.add_development_dependency 'rubocop', '~> 0.42'
+  s.add_development_dependency 'rubocop', '~> 0.49'
 end

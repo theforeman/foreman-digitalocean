@@ -3,7 +3,7 @@ module DigitaloceanImagesHelper
     images = @compute_resource.available_images
     images.each { |image| image.name = image.id if image.name.nil? }
     select_f f, :uuid, images.to_a.sort_by(&:full_name),
-      :id, :full_name, {}, :label => _('Image')
+             :id, :full_name, {}, :label => _('Image')
   end
 
   def select_image(f, compute_resource)
@@ -14,8 +14,8 @@ module DigitaloceanImagesHelper
              images,
              :id,
              :slug,
-             { :include_blank => (images.empty? || images.size == 1) ? false : _('Please select an image') },
-             { :label => ('Image'), :disabled => images.empty? } )
+             { :include_blank => images.empty? || images.size == 1 ? false : _('Please select an image') },
+             { :label => 'Image', :disabled => images.empty? })
   end
 
   def select_region(f, compute_resource)
@@ -27,7 +27,7 @@ module DigitaloceanImagesHelper
              :slug,
              :slug,
              {},
-             :label => ('Region'),
+             :label => 'Region',
              :disabled => compute_resource.images.empty?)
   end
 end

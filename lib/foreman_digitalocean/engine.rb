@@ -33,11 +33,11 @@ module ForemanDigitalocean
       require 'fog/digitalocean/models/compute/server'
 
       Fog::Compute::DigitalOcean::Image.send :include,
-        FogExtensions::Digitalocean::Image
+                                             FogExtensions::Digitalocean::Image
       Fog::Compute::DigitalOcean::Server.send :include,
-        FogExtensions::Digitalocean::Server
+                                              FogExtensions::Digitalocean::Server
       ::Host::Managed.send :include,
-        ForemanDigitalocean::Concerns::HostManagedExtensions
+                           ForemanDigitalocean::Concerns::HostManagedExtensions
     end
   end
 end
