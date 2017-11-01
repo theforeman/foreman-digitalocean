@@ -24,7 +24,7 @@ namespace :digitalocean do
                          "#{ForemanDigitalocean::Engine.root}/lib/**/*.rb",
                          "#{ForemanDigitalocean::Engine.root}/test/**/*.rb"]
       end
-    rescue
+    rescue StandardError
       puts 'Rubocop not loaded.'
     end
 

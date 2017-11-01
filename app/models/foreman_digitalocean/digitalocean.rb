@@ -121,7 +121,7 @@ module ForemanDigitalocean
       key_name = "foreman-#{id}#{Foreman.uuid}"
       client.create_ssh_key key_name, public_key
       KeyPair.create! :name => key_name, :compute_resource_id => id, :secret => private_key
-    rescue => e
+    rescue StandardError => e
       logger.warn 'failed to generate key pair'
       logger.error e.message
       logger.error e.backtrace.join("\n")
@@ -135,7 +135,7 @@ module ForemanDigitalocean
       client.destroy_ssh_key(ssh_key.id) if ssh_key
       key_pair.destroy
       true
-    rescue => e
+    rescue StandardError => e
       logger.warn "failed to delete key pair from DigitalOcean, you might need to cleanup manually : #{e}"
     end
 
