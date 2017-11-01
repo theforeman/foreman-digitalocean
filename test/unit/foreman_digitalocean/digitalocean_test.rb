@@ -9,7 +9,7 @@ module ForemanDigitalocean
     teardown { Fog.unmock! }
 
     test 'ssh key pair gets created after its saved' do
-      digitalocean = FactoryGirl.build(:digitalocean_cr)
+      digitalocean = FactoryBot.build(:digitalocean_cr)
       digitalocean.expects(:setup_key_pair)
       digitalocean.save
     end
