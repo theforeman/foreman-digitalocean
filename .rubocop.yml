@@ -11,10 +11,6 @@ Metrics/ClassLength:
 Metrics/AbcSize:
   Max: 25
 
-# Force before_filter until upgrade to Rails 4
-Rails/ActionFilter:
-  EnforcedStyle: action
-
 Naming/AccessorMethodName:
   Enabled: false
 
@@ -47,4 +43,7 @@ Style/SymbolArray:
   Enabled: false
 
 Lint/Loop:
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
   Enabled: false

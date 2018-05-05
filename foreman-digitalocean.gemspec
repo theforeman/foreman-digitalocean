@@ -1,4 +1,4 @@
-$LOAD_PATH.push File.expand_path('../lib', __FILE__)
+$LOAD_PATH.push File.expand_path('lib', __dir__)
 
 # Maintain your gem's version:
 require 'foreman_digitalocean/version'
@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'fog-digitalocean', '~> 0.3'
 
-  s.add_development_dependency 'rubocop', '0.51.0'
+  s.add_development_dependency 'rubocop', '0.54.0'
 end
