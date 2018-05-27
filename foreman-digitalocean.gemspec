@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.date        = Date.today.to_s
   s.authors     = ['Tommy McNeely, Daniel Lobato']
   s.email       = ['elobatocs@gmail.com']
-  s.homepage    = 'http://github.com/theforeman/foreman-digitalocean'
+  s.homepage    = 'https://github.com/theforeman/foreman-digitalocean'
   s.summary     = 'Provision and manage DigitalOcean droplets from Foreman'
   s.description = 'Provision and manage DigitalOcean droplets from Foreman.'
   s.licenses    = ['GPL-3']
