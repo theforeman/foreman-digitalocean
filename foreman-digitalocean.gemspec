@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/theforeman/foreman-digitalocean'
   s.summary     = 'Provision and manage DigitalOcean droplets from Foreman'
   s.description = 'Provision and manage DigitalOcean droplets from Foreman.'
-  s.licenses    = ['GPL-3']
+  s.licenses    = ['GPL-3.0']
 
   s.files = Dir['{app,config,db,lib,locale}/**/*', 'LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
