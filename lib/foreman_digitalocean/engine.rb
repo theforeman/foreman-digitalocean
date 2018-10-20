@@ -28,9 +28,9 @@ module ForemanDigitalocean
 
     config.to_prepare do
       require 'fog/digitalocean'
-      require 'fog/digitalocean/compute'
-      require 'fog/digitalocean/models/compute/image'
-      require 'fog/digitalocean/models/compute/server'
+      require 'fog/compute/digitalocean'
+      require 'fog/compute/digitalocean/models/image'
+      require 'fog/compute/digitalocean/models/server'
 
       Fog::Compute::DigitalOcean::Image.send :include,
                                              FogExtensions::Digitalocean::Image
