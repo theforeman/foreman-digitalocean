@@ -102,8 +102,7 @@ module ForemanDigitalocean
     private
 
     def client
-      @client ||= Fog::Compute.new(
-        :provider => 'DigitalOcean',
+      @client ||= Fog::Compute::DigitalOcean.new(
         :digitalocean_token => api_key
       )
     end
